@@ -1,0 +1,785 @@
+/* For gemini clone pure css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Google Sans Flex", sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.overflow-Container {
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+  width: 300px;
+  height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  /* border-radius: 1rem; in future maybe */ 
+}
+.main-content {
+  background-color: #000000;
+  flex: 1;
+  border-radius: 1rem;
+  overflow: auto;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+/* ********************** */
+/* Working on top-icons */
+#sidebar-toggle {
+  display: none;
+}
+#sidebar-toggle:checked ~ .overflow-Container {
+  width: 68px; /* Collapsed width */
+  transition: width 0.3s ease; /* Smooth animation */
+}
+
+#sidebar-toggle:checked ~ .overflow-Container .top-icons span:nth-child(2) {
+  display: none;
+}
+#sidebar-toggle:checked ~ .overflow-Container .chat-header-container .right {
+  display: none;
+}
+/* 3. HIDE TEXT: Hide buttons and labels when collapsed */
+#sidebar-toggle:checked ~ .overflow-Container button,
+#sidebar-toggle:checked ~ .overflow-Container label:not([for="sidebar-toggle"]),
+#sidebar-toggle:checked ~ .overflow-Container .chats-messages,
+#sidebar-toggle:checked ~ .overflow-Container .myStuff,
+#sidebar-toggle:checked ~ .overflow-Container .gems,
+#sidebar-toggle:checked ~ .overflow-Container .recent-chats {
+  display: none;
+}
+/* 4. HIDE EXTRA ICONS: Hide the right arrows and chat bubbles */
+#sidebar-toggle:checked ~ .overflow-Container .right,
+#sidebar-toggle:checked
+  ~ .overflow-Container
+  .material-symbols-outlined:not(:first-child) {
+  display: none;
+}
+/* Force hide the chevron arrows specifically */
+#sidebar-toggle:checked ~ .overflow-Container .myStuff span,
+#sidebar-toggle:checked ~ .overflow-Container .gems span {
+  display: none;
+}
+
+/* 5. CENTER ICONS: Center the remaining icons in the narrow bar */
+#sidebar-toggle:checked ~ .overflow-Container .new-chat-section,
+#sidebar-toggle:checked ~ .overflow-Container .myStuff,
+#sidebar-toggle:checked ~ .overflow-Container .gems,
+#sidebar-toggle:checked ~ .overflow-Container .footer {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+}
+/* 6. RESET GAPS: Remove gaps from your 'left' containers */
+#sidebar-toggle:checked ~ .overflow-Container .left {
+  gap: 0;
+}
+/* Applying css from top icons menu/search */
+.top-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0 0.4px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.top-icons span,
+.top-icons label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  /* border-radius: 50%; */
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: #e3e3e3;
+}
+.top-icons span:hover,
+.top-icons label:hover {
+  background-color: #333;
+  border-radius: 50%;
+  opacity: 1;
+}
+.top-icons :hover {
+  background-color: #333;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+/* Starting Chat sections */
+.chat-header-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 0.8;
+}
+.new-chat-section {
+  display: flex;
+  align-items: center;
+  margin-top: 0 !important;
+  background-color: #121212;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  flex-grow: 1; /* Takes up all available space */
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.new-chat-section:hover {
+  background-color: #333;
+}
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #c4c7c5;
+  font-size: 0.9rem;
+}
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 1px #333;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.right:hover {
+  background-color: #333;
+}
+.new-mess-btn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #e3e3e3;
+  font-family: "Google Sans Flex", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  pointer-events: none; /* Smooth clicking */
+  white-space: nowrap;
+}
+.material-symbols-outlined {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  color: #e3e3e3;
+  user-select: none;
+}
+/* Working on My Stuffs */
+.myStuff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #c4c7c5;
+  margin-top: 1rem !important;
+  background-color: #121212;
+  border-radius: 2rem;
+  /* padding: 0.5rem 0rem; */
+  padding-left: 0.5rem;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  flex-grow: 1; /* Takes up all available space */
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.myStuff:hover {
+  background-color: #333;
+}
+.My-Stuff-btn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #e3e3e3;
+  font-family: "Google Sans Flex", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  pointer-events: none; /* Smooth clicking */
+  white-space: nowrap;
+  padding: 0;
+}
+.myStuff .material-symbols-outlined {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  color: #e3e3e3;
+  user-select: none;
+}
+/* Working on My Gems */
+.gems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #c4c7c5;
+  margin-top: 1rem !important;
+  background-color: #121212;
+  border-radius: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  flex-grow: 1; /* Takes up all available space */
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.gems:hover {
+  background-color: #333;
+}
+.My-gems-btn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #e3e3e3;
+  font-family: "Google Sans Flex", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  pointer-events: none; /* Smooth clicking */
+  white-space: nowrap;
+  padding: 0;
+}
+.gems .material-symbols-outlined {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  color: #e3e3e3;
+  user-select: none;
+}
+/* Chats label*/
+.chats-messages {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.9rem;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #e3e3e3;
+  font-weight: 500;
+}
+.recent-chats {
+  display: flex;
+  flex-direction: column;
+}
+.chat-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #c4c7c5;
+  background-color: #121212;
+  border-radius: 2rem;
+  padding: 10px 5px 10px 0.5rem;
+  flex-grow: 1;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.chat-item:hover {
+  background-color: #333;
+}
+/* Creaating Footer sections */
+.sidebar-middle {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling if content goes too longs*/
+  margin-top: 1rem;
+  scrollbar-width: none;
+}
+.Footer-sections {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  background-color: #121212;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  flex-grow: 0; /* Takes up all available space */
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.Footer-sections:hover {
+  background-color: #333;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #c4c7c5;
+  font-size: 0.9rem;
+}
+/* Working on main page */
+/* --------------------- */
+/* working on top-bar */
+.main {
+  display: flex;
+}
+.top-bar-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.3rem;
+  padding: 0 0 0 0.5rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.mobile-menu-icon {
+  display: none;
+}
+.left-action {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  padding: 6px 8px;
+}
+.left-action img {
+  color: #c4c7c5;
+  opacity: 0.8;
+  cursor: pointer;
+  width: 5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  object-position: left;
+  margin-top: 0.5rem;
+  padding: 6px 0px 8px 0px;
+  margin-top: 0;
+  padding: 0;
+}
+.right-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 15px;
+}
+#profile {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.right-action label {
+  background-color: #121212;
+  color: #e3e3e3;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Google Sans", sans-serif;
+  letter-spacing: 0.5px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  user-select: none; /* Prevents highlighting the text */
+  transition: opacity 0.2s; /* Smooth hover effect */
+}
+.right-action label:hover {
+  opacity: 0.9;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* Slight glow */
+}
+
+/* top-sections */
+.top-sections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 250px auto 1rem auto;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-family: "Google Sans", sans-serif;
+}
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between logo and text */
+  margin-bottom: 5px;
+}
+
+.greeting h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2;
+  background: linear-gradient(
+    74deg,
+    #4285f4 0%,
+    #9b72cb 9%,
+    #d96570 20%,
+    #7d7d7d 24%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.content-container h1 {
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: #e3e3e3;
+  margin: 0;
+  opacity: 0.8; /* Makes it look softer */
+}
+
+/*  gemini Logo Size */
+#gemini-logo {
+  width: 20px; /* Adjust to match the big text size */
+  height: 20px;
+}
+/* Working on the Text input field  */
+.text-input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Google Sans", sans-serif;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  background-color: #1e1f20;
+  border-radius: 2rem;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+#input-sec {
+  margin: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0;
+  font-size: 1.1rem;
+  font-family: "Google Sans", sans-serif;
+  color: #e3e3e3;
+  background-color: transparent;
+  resize: none;
+}
+.leading-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+/* Style the Add icon to match Mic/Send */
+.leading-actions > .material-symbols-outlined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  font-size: 20px;
+}
+.leading-actions > .material-symbols-outlined:hover {
+  background-color: #333;
+}
+.tools-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e3e3e3;
+  cursor: pointer;
+}
+.tools-container .material-symbols-outlined {
+  font-size: 18px;
+}
+/* Custom Dropdown (CSS Only) */
+.model-selector {
+  position: relative;
+  font-family: "Google Sans", sans-serif;
+  user-select: none;
+}
+.model-toggle-checkbox {
+  display: none; /* Hide the actual checkbox */
+}
+.model-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e3e3e3;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+.model-trigger:hover {
+  background-color: #333;
+}
+.model-options {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Opens downwards */
+  right: 0;
+  margin-top: 10px;
+  background-color: #1e1f20;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  padding: 8px;
+  width: 220px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+/* The Magic: Show options when checkbox is checked */
+.model-toggle-checkbox:checked ~ .model-options {
+  display: block;
+}
+.model-option {
+  padding: 10px 15px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.model-option:hover {
+  background-color: #333;
+}
+.model-name {
+  color: #e3e3e3;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.model-meta {
+  color: #c4c7c5;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+.option-text {
+  display: flex;
+  flex-direction: column;
+}
+.selected-icon {
+  display: none;
+  color: #a8c7fa;
+}
+.model-option.selected .selected-icon {
+  display: block;
+}
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.mic-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #e3e3e3;
+  transition: background 0.2s;
+}
+.mic-icon:hover {
+  background-color: #333;
+}
+.mic-icon .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+.send-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #e3e3e3;
+  transition: background 0.2s;
+}
+.send-icon:hover {
+  background-color: #333;
+}
+.send-icon .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+/* Toggle icons when input field has text */
+/* here the advance css is using  */
+.text-input-field:has(#input-sec:not(:placeholder-shown)) .mic-icon {
+  display: none;
+}
+.text-input-field:has(#input-sec:not(:placeholder-shown)) .send-icon {
+  display: flex;
+}
+/* Below Middle Sections i called zero state */
+.zero-state {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0px 0px;
+  justify-content: center;
+  margin-top: 1rem;
+  color: #888888;
+  font-size: 1rem;
+}
+.zero-state button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #121212;
+  border: 0px solid #888888;
+  border-radius: 1.5rem;
+  color: #c4c7c5;
+  font-family: "Google Sans", sans-serif;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  margin: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.zero-state button:hover {
+  background-color: #333;
+}
+.zero-state button img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* RESPONSIVENESS ADDING TO GEMINI*/
+@media (max-width: 1024px) {
+  .top-sections {
+    margin-top: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overflow-Container {
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    /* Mobile specific: Hide sidebar by default */
+    left: 0;
+    top: 0;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease, visibility 0s 0.3s;
+    transition: transform 0.3s ease;
+    background-color: #121212;
+    visibility: hidden;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Show the mobile menu icon */
+  .mobile-menu-icon {
+    display: block;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #c4c7c5;
+  }
+
+  .top-sections {
+    margin-top: 80px;
+    padding: 0 10px;
+  }
+
+  .greeting h1 {
+    font-size: 1.8rem;
+  }
+
+  .content-container h1 {
+    font-size: 2rem;
+  }
+
+  .text-input-field {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .zero-state {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .zero-state button {
+    flex: 1 1 45%;
+    justify-content: center;
+  }
+
+  /* LOGIC INVERSION FOR MOBILE: Checked = Open */
+  #sidebar-toggle:checked ~ .overflow-Container {
+    transform: translateX(0); /* Slide in */
+    width: 280px; /* Full drawer width */
+    visibility: visible;
+    transition: transform 0.3s ease, visibility 0s 0s;
+  }
+
+  /* Restore elements hidden by desktop 'collapsed' logic */
+  #sidebar-toggle:checked ~ .overflow-Container button,
+  #sidebar-toggle:checked
+    ~ .overflow-Container
+    label:not([for="sidebar-toggle"]),
+  #sidebar-toggle:checked ~ .overflow-Container .myStuff,
+  #sidebar-toggle:checked ~ .overflow-Container .gems {
+    display: flex;
+  }
+  #sidebar-toggle:checked ~ .overflow-Container .chats-messages {
+    display: block;
+  }
+  #sidebar-toggle:checked ~ .overflow-Container .recent-chats {
+    display: flex;
+  }
+  #sidebar-toggle:checked ~ .overflow-Container .top-icons span:nth-child(2) {
+    display: flex; /* Show search icon */
+  }
+  #sidebar-toggle:checked ~ .overflow-Container .chat-header-container .right {
+    display: flex; /* Show chat bubble icon */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-sections {
+    margin-top: 60px;
+  }
+  .greeting h1,
+  .content-container h1 {
+    font-size: 1.5rem;
+  }
+  .zero-state button {
+    flex: 1 1 100%;
+  }
+  .tools-container span:nth-child(2) {
+    display: none;
+  }
+  .model-trigger {
+    font-size: 0.8rem;
+  }
+}
+
+/* this Frontend project is not as perfect as Gemini but it uses pure css and some points it also uses mordern CSS  */
+/* 
+  Gemini UI Clone — Pure HTML & CSS
+
+  This project is a UI clone inspired by Google Gemini,
+  built using only HTML and modern CSS (no JavaScript).
+
+  Key concepts used:
+  - Flexbox for layout and alignment
+  - Advanced selectors (:has, :checked, :not)
+  - State-based UI logic without JavaScript
+  - Responsive and accessible design principles
+
+  Purpose: Learning-focused frontend project
+  Created by: Abhishek kumar
+  Date: 10 januray 2026 Completed!
+*/
