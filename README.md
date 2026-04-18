@@ -27,13 +27,19 @@ A modern, responsive UI clone inspired by Google Gemini, built using pure HTML a
 
 ![Desktop](https://raw.githubusercontent.com/Abhishekaaryabgp/gemini-ui-clone/main/preview/desktop.png)
 
+
+
 ### 📱 Mobile
 
-![Mobile](https://raw.githubusercontent.com/Abhishekaaryabgp/gemini-ui-clone/main/preview/mobile.png)
+![Mobile](https://raw.githubusercontent.com/Abhishekaaryabgp/gemini-ui-clone/main/preview/mobileview.png)
+
+
 
 ### 🖥️ Full View
 
 ![Full](https://raw.githubusercontent.com/Abhishekaaryabgp/gemini-ui-clone/main/preview/full.png)
+
+
 
 ---
 
